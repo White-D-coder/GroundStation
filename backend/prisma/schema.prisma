@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Hw233Ota {
+  id          Int      @id @default(autoincrement())
+  ota_value   Int
+  ota_voltage Float
+  timestamp   DateTime @default(now())
+}
+
+model PotentiometerReading {
+  id       Int      @id @default(autoincrement())
+  value    Int
+  voltage  Float
+  timestamp DateTime @default(now())
+
+  @@map("potentiometer_readings")
+}
